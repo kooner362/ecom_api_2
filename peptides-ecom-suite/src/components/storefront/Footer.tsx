@@ -23,7 +23,7 @@ export default function StorefrontFooter() {
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: state.theme.primaryColor }}>
                 <FlaskConical className="w-5 h-5 text-white" />
               </div>
-              <span className="font-display font-700 text-white text-xl">peptidelab<span style={{ color: state.theme.primaryColor }}>.ca</span></span>
+              <span className="font-display font-700 text-white text-xl">{state.storeSettings.name}</span>
             </div>
             <p className="text-sm leading-relaxed mb-5">{state.theme.tagline}</p>
             <div className="flex gap-3">
@@ -77,8 +77,8 @@ export default function StorefrontFooter() {
               </form>
             )}
             <div className="mt-6 space-y-2">
-              <div className="flex items-center gap-2 text-xs"><Mail className="w-3.5 h-3.5" /> research@peptidelab.ca</div>
-              <div className="flex items-center gap-2 text-xs"><Phone className="w-3.5 h-3.5" /> 1-800-PEPTIDE</div>
+              <div className="flex items-center gap-2 text-xs"><Mail className="w-3.5 h-3.5" /> {state.storeSettings.email}</div>
+              <div className="flex items-center gap-2 text-xs"><Phone className="w-3.5 h-3.5" /> {state.storeSettings.phone}</div>
               <div className="flex items-center gap-2 text-xs"><MapPin className="w-3.5 h-3.5" /> Canada-wide Shipping</div>
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function StorefrontFooter() {
       </div>
       <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs">© 2025 peptidelab.ca — All rights reserved.</p>
+          <p className="text-xs">© {new Date().getFullYear()} {state.storeSettings.name} — All rights reserved.</p>
           <p className="text-xs">For research purposes only. Not for human consumption.</p>
         </div>
       </div>

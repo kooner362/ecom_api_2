@@ -43,7 +43,7 @@ export default function StorefrontHeader() {
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: state.theme.primaryColor }}>
               <FlaskConical className="w-5 h-5 text-white" />
             </div>
-            <span className="font-display font-700 text-white text-xl tracking-tight">peptidelab<span style={{ color: state.theme.primaryColor }}>.ca</span></span>
+            <span className="font-display font-700 text-white text-xl tracking-tight">{state.storeSettings.name}</span>
           </Link>
 
           {/* Desktop Nav */}

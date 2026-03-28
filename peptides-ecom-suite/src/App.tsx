@@ -1,10 +1,35 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { StoreProvider } from "@/contexts/StoreContext";
+import { StoreProvider, useStore } from "@/contexts/StoreContext";
+
+function DocumentHead() {
+  const { state } = useStore();
+  const { name, websiteUrl } = state.storeSettings;
+  const { tagline } = state.theme;
+
+  useEffect(() => {
+    if (!name) return;
+
+    document.title = name;
+
+    const setMeta = (selector: string, content: string) => {
+      const el = document.querySelector<HTMLMetaElement>(selector);
+      if (el) el.setAttribute("content", content);
+    };
+
+    setMeta('meta[name="description"]', tagline);
+    setMeta('meta[property="og:title"]', name);
+    setMeta('meta[property="og:description"]', tagline);
+    if (websiteUrl) setMeta('meta[property="og:url"]', websiteUrl);
+  }, [name, tagline, websiteUrl]);
+
+  return null;
+}
 import StorefrontLayout from "@/components/storefront/StorefrontLayout";
 import AdminLayout from "@/components/admin/AdminLayout";
 
@@ -45,6 +70,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <StoreProvider>
+      <DocumentHead />
       <TooltipProvider>
         <Toaster />
         <Sonner />

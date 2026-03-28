@@ -1,4 +1,5 @@
 import { FlaskConical, Award, Users, Shield, Microscope, FileCheck, Thermometer, Truck } from 'lucide-react';
+import { useStore } from '@/contexts/StoreContext';
 
 const stats = [
   { label: 'Peptides Available', value: '60+' },
@@ -22,6 +23,7 @@ const process = [
 ];
 
 export default function AboutPage() {
+  const { state } = useStore();
   return (
     <div>
       {/* Hero */}
@@ -32,7 +34,7 @@ export default function AboutPage() {
             {"Canada's Trusted Source for Research Peptides"}
           </h1>
           <p className="text-white/65 text-lg leading-relaxed">
-            {"peptidelab.ca supplies premium, HPLC-verified research peptides to scientists and institutions across Canada. Every product ships with a Certificate of Analysis so you can focus on discovery, not quality control."}
+            {`${state.storeSettings.name} supplies premium, HPLC-verified research peptides to scientists and institutions across Canada. Every product ships with a Certificate of Analysis so you can focus on discovery, not quality control.`}
           </p>
         </div>
       </div>
@@ -98,7 +100,7 @@ export default function AboutPage() {
       {/* Disclaimer */}
       <div className="border-t border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10 text-center">
-          <p className="text-xs text-muted-foreground">All products sold by peptidelab.ca are intended strictly for in-vitro research and laboratory use. They are not drugs, supplements, or intended for human or veterinary consumption. A Certificate of Analysis (CoA) is available for every product and batch upon request.</p>
+          <p className="text-xs text-muted-foreground">All products sold by {state.storeSettings.name} are intended strictly for in-vitro research and laboratory use. They are not drugs, supplements, or intended for human or veterinary consumption. A Certificate of Analysis (CoA) is available for every product and batch upon request.</p>
         </div>
       </div>
     </div>
