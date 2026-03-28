@@ -21,15 +21,6 @@ const emptyProduct: Omit<Product, 'id'> = {
   tags: [],
 };
 
-function readFileAsDataUrl(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(String(reader.result || ''));
-    reader.onerror = () => reject(new Error(`Failed to read ${file.name}`));
-    reader.readAsDataURL(file);
-  });
-}
-
 function isValidAbsoluteUrl(value: string): boolean {
   try {
     const url = new URL(value);
@@ -105,7 +96,7 @@ export default function AdminProductForm() {
     setError(null);
     setIsUploading(true);
     try {
-      const added = await Promise.all(imageFiles.map(readFileAsDataUrl));
+      const added = await Promise.all(imageFiles.map((file) => ecomApi.admin.uploadFile(file)));
       set('images', Array.from(new Set([...(form.images || []), ...added])));
     } catch (uploadError: any) {
       setError(uploadError?.message || 'Failed to upload images');

@@ -13,8 +13,6 @@ interface OpeningHour {
 }
 
 const DAYS: DayOfWeek[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-const LOGO_MAX_WIDTH = 640;
-const LOGO_MAX_HEIGHT = 240;
 const LOGO_MAX_FILE_BYTES = 2 * 1024 * 1024;
 
 function defaultOpeningHours(): OpeningHour[] {
@@ -50,41 +48,6 @@ export default function AdminSettings() {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const readFileAsDataUrl = (file: File) =>
-    new Promise<string>((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(String(reader.result || ''));
-      reader.onerror = () => reject(new Error(`Failed to read ${file.name}`));
-      reader.readAsDataURL(file);
-    });
-
-  const loadImage = (src: string) =>
-    new Promise<HTMLImageElement>((resolve, reject) => {
-      const image = new Image();
-      image.onload = () => resolve(image);
-      image.onerror = () => reject(new Error('Unable to load logo image'));
-      image.src = src;
-    });
-
-  const resizeImage = async (dataUrl: string) => {
-    const image = await loadImage(dataUrl);
-    const scale = Math.min(
-      1,
-      LOGO_MAX_WIDTH / Math.max(1, image.width),
-      LOGO_MAX_HEIGHT / Math.max(1, image.height)
-    );
-    const width = Math.max(1, Math.round(image.width * scale));
-    const height = Math.max(1, Math.round(image.height * scale));
-    const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
-    const context = canvas.getContext('2d');
-    if (!context) throw new Error('Unable to process logo image');
-    context.clearRect(0, 0, width, height);
-    context.drawImage(image, 0, 0, width, height);
-    return canvas.toDataURL('image/png');
-  };
-
   const uploadLogo = async (file?: File) => {
     if (!file) return;
     setError(null);
@@ -98,9 +61,8 @@ export default function AdminSettings() {
     }
 
     try {
-      const dataUrl = await readFileAsDataUrl(file);
-      const resized = await resizeImage(dataUrl);
-      setForm((state) => ({ ...state, logoUrl: resized }));
+      const url = await ecomApi.admin.uploadFile(file);
+      setForm((state) => ({ ...state, logoUrl: url }));
     } catch (uploadError: any) {
       setError(uploadError?.message || 'Failed to upload logo');
     }

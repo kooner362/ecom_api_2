@@ -108,6 +108,24 @@ export const ecomApi = {
       "SHIPPED_CONFIRMATION",
       "DELIVERED_CONFIRMATION"
     ] as const,
+    uploadFile(file: File): Promise<string> {
+      const token = getToken("admin");
+      const formData = new FormData();
+      formData.append("file", file);
+      return fetch(`${API_BASE_URL}/admin/uploads`, {
+        method: "POST",
+        headers: token ? { authorization: `Bearer ${token}` } : {},
+        body: formData,
+      })
+        .then(async (res) => {
+          if (!res.ok) {
+            const json = await res.json().catch(() => ({}));
+            throw new ApiError(json?.error?.message ?? "Upload failed", res.status, json?.error?.code);
+          }
+          return res.json() as Promise<{ url: string }>;
+        })
+        .then((data) => data.url);
+    },
     login(payload: { email: string; password: string }) {
       return request<{ accessToken: string }>("/admin/auth/login", "POST", payload);
     },

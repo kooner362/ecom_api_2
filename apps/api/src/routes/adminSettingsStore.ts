@@ -7,11 +7,7 @@ import { storeSettingsService } from "../services/storeSettingsService.js";
 
 const dayOfWeekEnum = z.enum(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]);
 const timePattern = /^([01]\d|2[0-3]):([0-5]\d)$/;
-const dataImagePattern = /^data:image\/(png|jpeg|jpg|webp|gif|svg\+xml);base64,[a-zA-Z0-9+/=\s]+$/;
-const logoUrlSchema = z.union([
-  z.string().url().max(4000),
-  z.string().regex(dataImagePattern).max(400000)
-]);
+const logoUrlSchema = z.string().url().max(4000);
 
 const updateSchema = z
   .object({

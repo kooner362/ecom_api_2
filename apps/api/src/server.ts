@@ -33,6 +33,9 @@ import { createStoreContentRouter } from "./routes/storeContent.js";
 import { createAdminSettingsStoreRouter } from "./routes/adminSettingsStore.js";
 import { createStorePaymentsRouter } from "./routes/storePayments.js";
 import { createAdminReportsRouter } from "./routes/adminReports.js";
+import { createAdminUploadsRouter } from "./routes/adminUploads.js";
+import path from "node:path";
+import fs from "node:fs";
 
 export function buildServer(env: ApiEnv, storeId: string) {
   const app = express();
@@ -50,6 +53,11 @@ export function buildServer(env: ApiEnv, storeId: string) {
       maxRetriesPerRequest: null
     }
   });
+
+  // Serve uploaded files as static assets from /uploads
+  const uploadsDir = path.resolve(env.UPLOADS_DIR);
+  fs.mkdirSync(uploadsDir, { recursive: true });
+  app.use("/uploads", express.static(uploadsDir));
 
   app.use(express.json());
   app.use((req, res, next) => {
@@ -88,6 +96,7 @@ export function buildServer(env: ApiEnv, storeId: string) {
   app.use(createAdminThemeRouter(env, storeId));
   app.use(createAdminSettingsPaymentsRouter(env, storeId));
   app.use(createAdminSettingsStoreRouter(env, storeId));
+  app.use(createAdminUploadsRouter(env, storeId));
   app.use(createStoreCatalogRouter(storeId));
   app.use(createStoreContentRouter(storeId));
   app.use(createStorePaymentsRouter(env, storeId));

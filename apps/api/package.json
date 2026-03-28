@@ -13,9 +13,11 @@
   "dependencies": {
     "@ecom/db": "1.0.0",
     "@ecom/shared": "1.0.0",
+    "@types/multer": "^2.1.0",
     "argon2": "^0.41.1",
     "bullmq": "^5.41.7",
     "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.1.1"
   }
 }

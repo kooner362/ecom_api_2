@@ -46,7 +46,9 @@ const apiEnvSchema = baseEnvSchema.extend({
   SMTP_PASS: z.string().min(1).optional(),
   DEFAULT_STORE_NAME: z.string().min(1).default("Default Store"),
   ADMIN_BOOTSTRAP_EMAIL: z.string().email().optional(),
-  ADMIN_BOOTSTRAP_PASSWORD: z.string().min(8).optional()
+  ADMIN_BOOTSTRAP_PASSWORD: z.string().min(8).optional(),
+  UPLOADS_DIR: z.string().min(1).default("./uploads"),
+  API_PUBLIC_URL: z.string().url().default("http://localhost:3000")
 });
 
 const workerEnvSchema = baseEnvSchema.extend({
