@@ -12,7 +12,7 @@ const values = [
   { Icon: Award, title: 'Pharmaceutical-Grade Purity', desc: 'Every peptide undergoes rigorous HPLC and mass spectrometry analysis to guarantee ≥99% purity before reaching your lab.' },
   { Icon: Shield, title: 'Third-Party Verified', desc: 'Independent laboratories validate each batch. We never self-certify — transparency and trust are non-negotiable.' },
   { Icon: Users, title: 'Expert Support', desc: 'Our team of biochemists and research specialists provides guidance on reconstitution, storage, and peptide selection.' },
-  { Icon: FlaskConical, title: 'Research-First Mission', desc: 'We exist to advance scientific discovery by making premium research peptides accessible to Canadian researchers.' },
+  { Icon: FlaskConical, title: 'Consumer-First Mission', desc: 'We exist to advance scientific discovery by making premium peptides accessible to Canadian consumers.' },
 ];
 
 const process = [
@@ -31,10 +31,10 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-primary font-semibold text-sm mb-3 uppercase tracking-widest">About Us</p>
           <h1 className="font-display text-4xl sm:text-5xl font-700 text-white mb-5">
-            {"Canada's Trusted Source for Research Peptides"}
+            {"Canada's Trusted Source for Peptides"}
           </h1>
           <p className="text-white/65 text-lg leading-relaxed">
-            {`${state.storeSettings.name} supplies premium, HPLC-verified research peptides to scientists and institutions across Canada. Every product ships with a Certificate of Analysis so you can focus on discovery, not quality control.`}
+            {`${state.storeSettings.name} supplies premium, HPLC-verified peptides to consumers and institutions across Canada. Every product ships with care and transparency.`}
           </p>
         </div>
       </div>
@@ -58,7 +58,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="font-display text-2xl sm:text-3xl font-700 mb-4">Our Mission</h2>
           <p className="text-muted-foreground leading-relaxed">
-            We believe breakthrough research shouldn't be gated by supply-chain barriers. Our mission is to provide Canadian researchers with the highest-purity peptides at competitive prices, backed by transparent testing data and responsive scientific support. Every vial that leaves our facility carries the same standard of quality we'd demand for our own research.
+            We believe breakthrough quality shouldn't be gated by supply-chain barriers. Our mission is to provide Canadians with the highest-purity peptides at competitive prices, backed by transparent testing data and responsive scientific support. Every vial that leaves our facility carries the same standard of quality we'd demand for our own use.
           </p>
         </div>
 
@@ -94,13 +94,6 @@ export default function AboutPage() {
               <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Disclaimer */}
-      <div className="border-t border-border">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10 text-center">
-          <p className="text-xs text-muted-foreground">All products sold by {state.storeSettings.name} are intended strictly for in-vitro research and laboratory use. They are not drugs, supplements, or intended for human or veterinary consumption. A Certificate of Analysis (CoA) is available for every product and batch upon request.</p>
         </div>
       </div>
     </div>

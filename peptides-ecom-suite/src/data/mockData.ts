@@ -121,7 +121,7 @@ export const defaultTheme: ThemeSettings = {
   buttonColor: '#0D9488',
   headerBgColor: '#0A1628',
   font: 'Space Grotesk',
-  tagline: 'Research-grade peptides delivered across Canada.',
+  tagline: 'Canada\'s top source for quality peptides',
   showFeaturedSection: true,
   showCategorySection: true,
   showNewsletterSection: true,

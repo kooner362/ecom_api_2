@@ -22,9 +22,9 @@ const DEFAULT_PAGES = [
     title: "About Real Canadian Peptides",
     body: {
       subtitle: "Our Story",
-      heading: "Canada's Trusted Source for Research Peptides",
+      heading: "Canada's Trusted Source for Peptides",
       description:
-        "We supply premium, HPLC-verified research peptides to scientists and institutions across Canada. Every product ships with a Certificate of Analysis so you can focus on discovery, not quality control."
+        "We supply premium, HPLC-verified peptides to scientists and institutions across Canada. Every product ships with a Certificate of Analysis so you can focus on discovery, not quality control."
     }
   },
   {

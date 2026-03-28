@@ -17,17 +17,17 @@ export default function HomePage() {
     hero: (
       <section key="hero" className="relative min-h-[70vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Research peptides" className="w-full h-full object-cover" />
+          <img src={heroImage} alt="Real Canadian peptides" className="w-full h-full object-cover" />
           <div className="absolute inset-0" style={{ background: 'var(--gradient-hero)' }} />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-20">
           <div className="max-w-2xl animate-fade-in">
             <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium text-white/90 border border-white/20 backdrop-blur-sm bg-white/10 mb-6">
               <Sparkles className="w-4 h-4" style={{ color: theme.primaryColor }} />
-              Canada's Premier Peptide Research Supplier
+              Canada's Premier Peptide Supplier
             </div>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-700 text-white leading-tight mb-5">
-              Research-Grade<br />
+              Consumer-Grade<br />
               <span style={{ color: theme.primaryColor }}>Peptides</span> Delivered
             </h1>
             <p className="text-white/80 text-lg sm:text-xl mb-8 leading-relaxed">{theme.tagline}</p>

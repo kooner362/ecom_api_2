@@ -62,7 +62,7 @@ export default function StorefrontFooter() {
           {/* Newsletter + Contact */}
           <div>
             <h4 className="font-display font-600 text-white text-sm mb-4 tracking-wide uppercase">Stay in the Loop</h4>
-            <p className="text-sm mb-4">Get exclusive research updates and new peptide arrivals in your inbox.</p>
+            <p className="text-sm mb-4">Get exclusive updates and new peptide arrivals in your inbox.</p>
             {subscribed ? (
               <div className="text-sm text-green-400 font-medium">🎉 You're subscribed!</div>
             ) : (
@@ -87,7 +87,6 @@ export default function StorefrontFooter() {
       <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs">© {new Date().getFullYear()} {state.storeSettings.name} — All rights reserved.</p>
-          <p className="text-xs">For research purposes only. Not for human consumption.</p>
         </div>
       </div>
     </footer>
