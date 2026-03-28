@@ -78,7 +78,9 @@ export default function StorefrontFooter() {
             )}
             <div className="mt-6 space-y-2">
               <div className="flex items-center gap-2 text-xs"><Mail className="w-3.5 h-3.5" /> {state.storeSettings.email}</div>
-              <div className="flex items-center gap-2 text-xs"><Phone className="w-3.5 h-3.5" /> {state.storeSettings.phone}</div>
+              {state.storeSettings.phone && (
+                <div className="flex items-center gap-2 text-xs"><Phone className="w-3.5 h-3.5" /> {state.storeSettings.phone}</div>
+              )}
               <div className="flex items-center gap-2 text-xs"><MapPin className="w-3.5 h-3.5" /> Canada-wide Shipping</div>
             </div>
           </div>
