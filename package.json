@@ -8,7 +8,6 @@
   ],
   "scripts": {
     "dev": "npm run infra:up && npm run prisma:migrate && npm run prisma:generate && npm run build -w packages/shared && npm run build -w packages/db && concurrently -n api,worker -c cyan,magenta \"npm run dev -w apps/api\" \"npm run dev -w apps/worker\"",
-    "dev:fireking": "npm run dev --prefix fireking-ecom-suite",
     "dev:peptides": "npm run dev --prefix peptides-ecom-suite",
     "build": "npm run build -w packages/shared && npm run build -w packages/db && npm run build -w apps/api && npm run build -w apps/worker",
     "start": "npm run build && concurrently -n api,worker -c cyan,magenta \"npm run start -w apps/api\" \"npm run start -w apps/worker\"",

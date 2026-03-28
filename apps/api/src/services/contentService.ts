@@ -19,12 +19,12 @@ const DEFAULT_THEME = {
 const DEFAULT_PAGES = [
   {
     slug: "about",
-    title: "About Fireking",
+    title: "About Real Canadian Peptides",
     body: {
       subtitle: "Our Story",
-      heading: "Canada's Most Trusted Fireworks Retailer",
+      heading: "Canada's Trusted Source for Research Peptides",
       description:
-        "Founded in 2009, fireking.ca has been Canada's go-to destination for premium consumer and professional fireworks."
+        "We supply premium, HPLC-verified research peptides to scientists and institutions across Canada. Every product ships with a Certificate of Analysis so you can focus on discovery, not quality control."
     }
   },
   {

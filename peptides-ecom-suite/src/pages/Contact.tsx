@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
-import { ecomApi } from '@/lib/ecom-api';
-import { useEffect } from 'react';
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
-  const [heading, setHeading] = useState('Contact Us');
-  const [description, setDescription] = useState("We're here to help. Reach out and we'll respond within one business day.");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(f => ({ ...f, [e.target.name]: e.target.value }));
@@ -17,38 +13,21 @@ export default function ContactPage() {
     setSent(true);
   };
 
-  useEffect(() => {
-    let active = true;
-    const load = async () => {
-      try {
-        const page = await ecomApi.store.page('contact');
-        const body = (page.body || {}) as Record<string, unknown>;
-        if (!active) return;
-        if (typeof body.heading === 'string' && body.heading.trim()) setHeading(body.heading);
-        if (typeof body.description === 'string' && body.description.trim()) setDescription(body.description);
-      } catch {
-        // keep fallback content
-      }
-    };
-    void load();
-    return () => { active = false; };
-  }, []);
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
       <div className="text-center mb-12">
         <p className="text-primary font-semibold text-sm mb-2 uppercase tracking-widest">Get in Touch</p>
-        <h1 className="font-display text-3xl sm:text-4xl font-700">{heading}</h1>
-        <p className="text-muted-foreground mt-3">{description}</p>
+        <h1 className="font-display text-3xl sm:text-4xl font-700">Contact Us</h1>
+        <p className="text-muted-foreground mt-3">We're here to help. Reach out and we'll respond within one business day.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         {/* Info */}
         <div className="space-y-5">
           {[
-            { Icon: Mail, title: 'Email', lines: ['info@firekingfireworks.ca', 'orders@firekingfireworks.ca'] },
-            { Icon: Phone, title: 'Phone', lines: ['1-800-FIRE-KING', 'Mon–Fri, 9am–6pm ET'] },
-            { Icon: MapPin, title: 'Address', lines: ['100 Sparks Way', 'Toronto, ON M5V 1A1'] },
+            { Icon: Mail, title: 'Email', lines: ['info@realcanadianpeptides.ca', 'orders@realcanadianpeptides.ca'] },
+            // { Icon: Phone, title: 'Phone', lines: ['1-800-FIRE-KING', 'Mon–Fri, 9am–6pm ET'] },
+            // { Icon: MapPin, title: 'Address', lines: ['100 Sparks Way', 'Toronto, ON M5V 1A1'] },
           ].map(({ Icon, title, lines }) => (
             <div key={title} className="flex gap-4 bg-card border border-border rounded-xl p-5">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
