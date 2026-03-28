@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "snap",
+    "url": "https://www.pyrobobs.ca/product-page/snap",
+    "reason": "Product scrape snap timed out after 45000ms"
+  },
+  {
+    "slug": "snapping-dragon",
+    "url": "https://www.pyrobobs.ca/product-page/snapping-dragon",
+    "reason": "page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.pyrobobs.ca/product-page/snapping-dragon\nCall log:\n\u001b[2m  - navigating to \"https://www.pyrobobs.ca/product-page/snapping-dragon\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  {
+    "slug": "snapshot",
+    "url": "https://www.pyrobobs.ca/product-page/snapshot",
+    "reason": "page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.pyrobobs.ca/product-page/snapshot\nCall log:\n\u001b[2m  - navigating to \"https://www.pyrobobs.ca/product-page/snapshot\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  }
+]

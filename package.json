@@ -1,0 +1,35 @@
+{
+  "name": "ecom_api",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run infra:up && npm run prisma:migrate && npm run prisma:generate && npm run build -w packages/shared && npm run build -w packages/db && concurrently -n api,worker -c cyan,magenta \"npm run dev -w apps/api\" \"npm run dev -w apps/worker\"",
+    "dev:fireking": "npm run dev --prefix fireking-ecom-suite",
+    "dev:peptides": "npm run dev --prefix peptides-ecom-suite",
+    "build": "npm run build -w packages/shared && npm run build -w packages/db && npm run build -w apps/api && npm run build -w apps/worker",
+    "start": "npm run build && concurrently -n api,worker -c cyan,magenta \"npm run start -w apps/api\" \"npm run start -w apps/worker\"",
+    "infra:up": "docker compose up -d postgres redis",
+    "infra:down": "docker compose down",
+    "infra:reset": "docker compose down -v",
+    "prisma:generate": "npm run prisma:generate -w packages/db",
+    "prisma:migrate": "npm run prisma:migrate -w packages/db",
+    "prisma:studio": "npm run prisma:studio -w packages/db",
+    "test:smoke:addresses": "./scripts/smoke-addresses.sh",
+    "import:pyrobobs": "set -a; [ -f ./.env ] && . ./.env; set +a; node --import tsx scripts/import-pyrobobs.ts",
+    "import:pyrobobs:scrape": "set -a; [ -f ./.env ] && . ./.env; set +a; node --import tsx scripts/import-pyrobobs.ts --scrape-only",
+    "import:pyrobobs:seed": "set -a; [ -f ./.env ] && . ./.env; set +a; node --import tsx scripts/import-pyrobobs.ts --seed-only"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^22.13.10",
+    "concurrently": "^9.1.2",
+    "playwright": "^1.58.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}

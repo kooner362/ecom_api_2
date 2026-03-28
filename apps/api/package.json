@@ -1,0 +1,21 @@
+{
+  "name": "@ecom/api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "node --import tsx src/index.ts",
+    "build": "rm -rf dist tsconfig.tsbuildinfo && tsc -p tsconfig.json",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@ecom/db": "1.0.0",
+    "@ecom/shared": "1.0.0",
+    "argon2": "^0.41.1",
+    "bullmq": "^5.41.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+}

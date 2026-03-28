@@ -1,0 +1,17 @@
+ALTER TABLE "StoreSetting"
+ADD COLUMN "businessType" TEXT,
+ADD COLUMN "phone" TEXT,
+ADD COLUMN "addressLine1" TEXT,
+ADD COLUMN "addressLine2" TEXT,
+ADD COLUMN "city" TEXT,
+ADD COLUMN "stateOrProvince" TEXT,
+ADD COLUMN "postalCode" TEXT,
+ADD COLUMN "countryCode" TEXT,
+ADD COLUMN "logoUrl" TEXT,
+ADD COLUMN "sameAs" JSONB,
+ADD COLUMN "openingHours" JSONB,
+ADD COLUMN "priceRange" TEXT,
+ADD COLUMN "geoLat" DOUBLE PRECISION,
+ADD COLUMN "geoLng" DOUBLE PRECISION,
+ADD COLUMN "googleMapsUrl" TEXT,
+ADD COLUMN "hasPhysicalStorefront" BOOLEAN NOT NULL DEFAULT true;
