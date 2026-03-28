@@ -142,11 +142,6 @@ export default function StorefrontHeader() {
               )}
             </Link>
 
-            {/* Admin link */}
-            <Link to="/admin" className="hidden sm:flex items-center gap-1.5 ml-2 px-3 py-1.5 rounded-lg text-xs font-semibold border border-white/20 text-white/70 hover:text-white hover:border-white/40 transition-colors">
-              Admin
-            </Link>
-
             {/* Mobile menu */}
             <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 text-white/70 hover:text-white">
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
