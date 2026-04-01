@@ -14,6 +14,8 @@ interface OpeningHour {
 
 const DAYS: DayOfWeek[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const LOGO_MAX_FILE_BYTES = 2 * 1024 * 1024;
+const LOGO_MAX_WIDTH = 400;
+const LOGO_MAX_HEIGHT = 200;
 
 function defaultOpeningHours(): OpeningHour[] {
   return DAYS.map((day) => ({ dayOfWeek: day, opens: '09:00', closes: '17:00', closed: true }));
